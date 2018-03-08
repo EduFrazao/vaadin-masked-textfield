@@ -29,8 +29,16 @@ public class NumericFieldWidget extends VTextField {
 			}
 			));
 	
+	private boolean isMinusCode(char code) {
+		char minusKey = (char) KeyCodes.KEY_NUM_MINUS;
+		char insertKey = (char) KeyCodes.KEY_INSERT;
+		int carretPosition = getCursorPos();
+		return (code == minusKey || code == insertKey) && carretPosition == 0;
+	}
+	
 	private boolean isAcceptableKey(char charCode) {
 		return Character.isDigit(charCode)
+				|| isMinusCode(charCode)
 				|| acceptedCharSet.contains(charCode);
 	}
 	
