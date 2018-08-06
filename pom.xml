@@ -16,6 +16,7 @@
 		<jetty.version>9.2.12.v20150709</jetty.version>
 		<jetty.port>7080</jetty.port>
 		<context.path>/masked</context.path>
+		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
 
 	<licenses>
