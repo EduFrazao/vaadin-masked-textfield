@@ -76,11 +76,24 @@ public class MaskedTextFieldWidget extends VTextField implements KeyDownHandler,
 		setText(value, true);
 	}
 	
+	private boolean isStringsEquals(String v1, String v2) {
+		if(v1 == null && v2 == null) {
+			return true;
+		}
+		if(v1 != null && v2 != null) {
+			return v1.equals(v2);
+		}
+		return false;
+	}
+	
 	protected void setText(String value, boolean checkComplete) {
 		String v = formatString(value);
-		string = new StringBuilder(v);
-		super.setText((checkComplete && isFieldIfIncomplete()) ? "" : v);
-		valueChange(false);
+		String current = getText();
+		if(!isStringsEquals(v, current)) {
+			string = new StringBuilder(v);
+			super.setText((checkComplete && isFieldIfIncomplete()) ? "" : v);
+			valueChange(false);
+		}
 	}
 
 	public void setMask(String mask) {
@@ -230,7 +243,6 @@ public class MaskedTextFieldWidget extends VTextField implements KeyDownHandler,
 	@Override 
 	public void onBrowserEvent(Event event) { 
 	    if(event.getTypeInt() == Event.ONPASTE) {
-	    	super.setText("");
 	    	processOriginalPasteEvent(event);
 	    	Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
 				@Override
@@ -250,6 +262,7 @@ public class MaskedTextFieldWidget extends VTextField implements KeyDownHandler,
 	
 	protected void formatPaste() {
 		setText(formatString(super.getText()));
+		valueChange(false);
 	}
 	
 	protected String formatString(final String value) {
