@@ -11,5 +11,6 @@ public class MoneyMaskConfig implements Serializable {
 	public int fractionDigits = 2;
 	public String decimalSeparator;
 	public String gropupingSeparator;
+	public String cursor;
 
 }

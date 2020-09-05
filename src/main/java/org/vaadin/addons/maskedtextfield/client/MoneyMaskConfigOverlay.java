@@ -1,32 +1,11 @@
 package org.vaadin.addons.maskedtextfield.client;
 
-import org.vaadin.addons.maskedtextfield.shared.MoneyMaskConfig;
-
 import com.google.gwt.core.client.JavaScriptObject;
 
 public class MoneyMaskConfigOverlay extends JavaScriptObject {
 
 	protected MoneyMaskConfigOverlay() {
 		super();
-	}
-	
-	public static MoneyMaskConfigOverlay toOverLay(MoneyMaskConfig config) {
-		final MoneyMaskConfigOverlay overlay = MoneyMaskConfigOverlay.createObject().cast();
-		
-		/* fixed for now */
-		overlay.setAllowNegative(true);
-		overlay.setNegativeSignAfter(false);
-		overlay.setCursor(null);
-		overlay.setPrefix("");
-		overlay.setSuffix("");
-		
-		overlay.setFixed(config.fixed);
-		overlay.setFractionDigits(config.fractionDigits);
-		overlay.setDecimalSeparator(config.decimalSeparator);
-		overlay.setThousandsSeparator(config.gropupingSeparator);
-		overlay.setAutoCompleteDecimal(true);
-		
-		return overlay;
 	}
 	
 	public final native void setAllowNegative(boolean allowNegative) /*-{
@@ -108,6 +87,5 @@ public class MoneyMaskConfigOverlay extends JavaScriptObject {
 	public final native boolean isAutoCompleteDecimal() /*-{
 		return this.autoCompleteDecimal;
 	}-*/;
-	
 	
 }

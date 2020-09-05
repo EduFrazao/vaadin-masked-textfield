@@ -11,22 +11,22 @@ public class MoneyTextFieldConnector extends TextFieldConnector {
 
 	private static final long serialVersionUID = 1L;
 	
-		@Override
-		public MoneyTextFieldWidget getWidget() {
-			return (MoneyTextFieldWidget) super.getWidget();
-		}
+	@Override
+	public MoneyTextFieldWidget getWidget() {
+		return (MoneyTextFieldWidget) super.getWidget();
+	}
 
-		@Override
-		public MoneyTextFieldState getState() {
-			return (MoneyTextFieldState) super.getState();
-		}
+	@Override
+	public MoneyTextFieldState getState() {
+		return (MoneyTextFieldState) super.getState();
+	}
 
-		@Override
-		public void onStateChanged(StateChangeEvent stateChangeEvent) {
-			if(stateChangeEvent.hasPropertyChanged("fieldConfig")) {
-				getWidget().updateMask(getState().fieldConfig);
-			}
-			super.onStateChanged(stateChangeEvent);
+	@Override
+	public void onStateChanged(StateChangeEvent stateChangeEvent) {
+		super.onStateChanged(stateChangeEvent);
+		if(stateChangeEvent.hasPropertyChanged("fieldConfig")) {
+			getWidget().updateMask(getState().fieldConfig);
 		}
+	}
 	
 }

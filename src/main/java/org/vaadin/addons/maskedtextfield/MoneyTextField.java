@@ -17,7 +17,7 @@ import com.vaadin.ui.TextField;
 /**
  * Server side component for the VMaskedTextField widget.
  */
-@JavaScript("smm-3.0-min.js")
+@JavaScript("smm-3.0.js")
 public class MoneyTextField extends TextField {
 
 	private static final long serialVersionUID = 1L;
@@ -133,6 +133,16 @@ public class MoneyTextField extends TextField {
 				: Character.MIN_VALUE;
 	}
 	
+	public void setCursorAutoPosition(CursorPosition cursorPosition) {
+		getState().fieldConfig.cursor = cursorPosition != null ? cursorPosition.toString() : null;
+	}
+	
+	public CursorPosition getCursorAutoPosition() {
+		return getState().fieldConfig.cursor != null
+				? CursorPosition.valueOf(getState().fieldConfig.cursor)
+				: null;
+	}
+	
 	@Override
 	public MoneyTextFieldState getState() {
 		return (MoneyTextFieldState) super.getState();
@@ -147,6 +157,12 @@ public class MoneyTextField extends TextField {
 			}
 			super.setPropertyDataSource(newDataSource);
 		}
+	}
+	
+	public static enum CursorPosition {
+		MOVE,
+		START,
+		END
 	}
 
 	/**

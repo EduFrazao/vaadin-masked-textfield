@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addons</groupId>
 	<artifactId>maskedtextfield</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.18</version>
+	<version>0.1.19</version>
 	<name>MaskedField Vaadin Addon</name>
 
 	<properties>
